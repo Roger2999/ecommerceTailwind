@@ -1,9 +1,10 @@
 import { Cards } from "../../components/Cards";
 import { SearchInput } from "../../components/SearchInput";
-import { useCategories } from "../../customHooks/useCategories";
+
 import { useProducts } from "../../customHooks/useProducts";
 import { useSearch } from "../../customHooks/useSearch";
 import { useCarStore } from "../../stores/useCarStore";
+import { useCategoryStore } from "../../stores/useCategoryStore";
 
 export const ProductsPage = () => {
   const { products, isLoading, isError, error } = useProducts();
@@ -11,18 +12,16 @@ export const ProductsPage = () => {
   const addToCar = useCarStore((state) => state.addToCar);
   const removeFromCar = useCarStore((state) => state.removeFromCar);
   const { search, onChange } = useSearch();
-  const { categories, setCategories, onCategoryChange } = useCategories();
-  const allCategories = [...new Set(products.map((p) => p.category))];
+  const categories = useCategoryStore((state) => state.category);
+
+  const productsFiltrated = products.filter(
+    (product) =>
+      product.title.toLowerCase().includes(search.toLowerCase()) &&
+      (product.category === categories || categories === "all")
+  );
   return (
     <>
-      <SearchInput
-        search={search}
-        onChange={onChange}
-        categories={categories}
-        setCategories={setCategories}
-        onCategoryChange={onCategoryChange}
-        allCategories={allCategories}
-      />
+      <SearchInput search={search} onChange={onChange} />
       <Cards
         car={car}
         products={products}
@@ -31,8 +30,7 @@ export const ProductsPage = () => {
         error={error}
         addToCar={addToCar}
         removeFromCar={removeFromCar}
-        search={search}
-        categories={categories}
+        productsFiltrated={productsFiltrated}
       />
     </>
   );

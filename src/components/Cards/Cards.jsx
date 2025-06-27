@@ -1,19 +1,14 @@
 export const Cards = ({
   car,
-  products,
+
   isLoading,
   isError,
   error,
   addToCar,
   removeFromCar,
-  search,
-  categories,
+
+  productsFiltrated,
 }) => {
-  const productsFiltrated = products.filter(
-    (product) =>
-      product.title.toLowerCase().includes(search.toLowerCase()) &&
-      (product.category === categories || categories === "all")
-  );
   return (
     <>
       {isLoading ? (

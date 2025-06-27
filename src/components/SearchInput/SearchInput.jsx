@@ -1,14 +1,6 @@
 import { CategoriesBar } from "../CategoriesBar/CategoriesBar";
 import "./SearchInput.css";
-export const SearchInput = ({
-  categories,
-  setCategories,
-  onCategoryChange,
-  allCategories,
-
-  search,
-  onChange,
-}) => {
+export const SearchInput = ({ search, onChange }) => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
@@ -23,12 +15,7 @@ export const SearchInput = ({
           >
             Buscar
           </label>
-          <CategoriesBar
-            categories={categories}
-            setCategories={setCategories}
-            onCategoryChange={onCategoryChange}
-            allCategories={allCategories}
-          />
+          <CategoriesBar />
           <div className="relative w-full">
             <input
               type="search"

@@ -1,8 +1,11 @@
-export const CategoriesBar = ({
-  categories,
-  onCategoryChange,
-  allCategories,
-}) => {
+import { useProducts } from "../../customHooks/useProducts";
+import { useCategoryStore } from "../../stores/useCategoryStore";
+
+export const CategoriesBar = () => {
+  const { products } = useProducts();
+  const categories = useCategoryStore((state) => state.category);
+  const onCategoryChange = useCategoryStore((state) => state.onCategoryChange);
+  const allCategories = [...new Set(products.map((p) => p.category))];
   return (
     <>
       <select
