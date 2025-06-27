@@ -1,7 +1,7 @@
 import { useCarStore } from "../../stores/useCarStore";
 
 export const Badge = () => {
-  const cantidad = useCarStore((state) => state.car.length);
+  const quantity = useCarStore((state) => state.car.length);
   return (
     <>
       <button
@@ -18,7 +18,7 @@ export const Badge = () => {
         ></img>
         <span className="sr-only">Notifications</span>
         <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-          {cantidad}
+          {quantity}
         </div>
       </button>
     </>

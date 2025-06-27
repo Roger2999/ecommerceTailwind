@@ -4,7 +4,10 @@ export const QuantityButton = ({ moreLot, lessLot, id, quantity }) => {
       <button
         className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-base w-8 h-8 flex items-center justify-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
         type="button"
-        onClick={() => lessLot(id)}
+        onClick={() => {
+          lessLot(id);
+          console.log(quantity);
+        }}
         aria-label="Disminuir cantidad"
       >
         -
@@ -15,7 +18,10 @@ export const QuantityButton = ({ moreLot, lessLot, id, quantity }) => {
       <button
         className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-full text-base w-8 h-8 flex items-center justify-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
         type="button"
-        onClick={() => moreLot(id)}
+        onClick={() => {
+          moreLot(id);
+          console.log(quantity);
+        }}
         aria-label="Aumentar cantidad"
       >
         +

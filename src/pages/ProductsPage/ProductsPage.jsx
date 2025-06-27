@@ -1,6 +1,5 @@
 import { Cards } from "../../components/Cards";
 import { SearchInput } from "../../components/SearchInput";
-
 import { useProducts } from "../../customHooks/useProducts";
 import { useSearch } from "../../customHooks/useSearch";
 import { useCarStore } from "../../stores/useCarStore";

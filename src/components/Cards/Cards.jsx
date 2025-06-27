@@ -1,6 +1,7 @@
+import { useCarStore } from "../../stores/useCarStore";
+import { QuantityButton } from "../QuantityButton";
 export const Cards = ({
   car,
-
   isLoading,
   isError,
   error,
@@ -9,6 +10,8 @@ export const Cards = ({
 
   productsFiltrated,
 }) => {
+  const moreLot = useCarStore((state) => state.moreLot);
+  const lessLot = useCarStore((state) => state.lessLot);
   return (
     <>
       {isLoading ? (
@@ -22,7 +25,12 @@ export const Cards = ({
 
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
               {productsFiltrated.map((product) => {
+                //RETORNA BOOLEANO, TRUE SI SE COMPLE LA CONDICION Y FALSE SI NO
                 const inCar = car.some((item) => item.id === product.id);
+                //RETORNA UN OBJETO QUE CUMPLA LAS CONDICIONES
+                const inCarQuantity = car.find(
+                  (item) => item.id === product.id
+                );
                 return (
                   <div
                     key={product.id}
@@ -44,13 +52,21 @@ export const Cards = ({
                       </p>
                     </div>
                     {inCar ? (
-                      <button
-                        type="button"
-                        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mt-4 self-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                        onClick={() => removeFromCar(product.id)}
-                      >
-                        Quitar del carrito
-                      </button>
+                      <>
+                        <QuantityButton
+                          moreLot={moreLot}
+                          lessLot={lessLot}
+                          id={product.id}
+                          quantity={inCarQuantity.quantity}
+                        />
+                        <button
+                          type="button"
+                          className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mt-4 self-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                          onClick={() => removeFromCar(product.id)}
+                        >
+                          Quitar del carrito
+                        </button>
+                      </>
                     ) : (
                       <button
                         type="button"
