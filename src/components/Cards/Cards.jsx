@@ -1,5 +1,7 @@
 import { useCarStore } from "../../stores/useCarStore";
 import { QuantityButton } from "../QuantityButton";
+import { Button } from "../QuantityButton/Button";
+import "./Cards.css";
 export const Cards = ({
   car,
   isLoading,
@@ -37,7 +39,7 @@ export const Cards = ({
                     className="group flex flex-col justify-between h-full bg-white rounded-lg p-2 shadow"
                   >
                     <div>
-                      <div className="w-full h-48 flex items-center justify-center bg-white rounded-lg">
+                      <div className="w-full h-48 flex items-center justify-center bg-white rounded-lg card-container">
                         <img
                           alt={product.title}
                           src={product.image}
@@ -58,26 +60,22 @@ export const Cards = ({
                           lessLot={lessLot}
                           id={product.id}
                           quantity={inCarQuantity.quantity}
+                          className="button-container"
                         />
-                        <button
+                        <Button
                           type="button"
-                          className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mt-4 self-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-                          onClick={() => removeFromCar(product.id)}
-                        >
-                          Quitar del carrito
-                        </button>
+                          variant="outcard"
+                          handleClick={() => removeFromCar(product.id)}
+                          label={"Quitar del carrito"}
+                        />
                       </>
                     ) : (
-                      <button
+                      <Button
                         type="button"
-                        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mt-4 self-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-                        onClick={() => {
-                          addToCar(product);
-                          console.log(car);
-                        }}
-                      >
-                        Agregar al carrito
-                      </button>
+                        variant="incard"
+                        handleClick={() => addToCar(product)}
+                        label={"Agregar al carrito"}
+                      />
                     )}
                   </div>
                 );

@@ -4,8 +4,7 @@ import { useCarStore } from "../../stores/useCarStore";
 export const CarPage = () => {
   const car = useCarStore((state) => state.car);
   const removeFromCar = useCarStore((state) => state.removeFromCar);
-  const moreLot = useCarStore((state) => state.moreLot);
-  const lessLot = useCarStore((state) => state.lessLot);
+
   const totalPrice = car
     .reduce((total, product) => total + product.price * product.quantity, 0)
     .toFixed(2);
@@ -87,8 +86,6 @@ export const CarPage = () => {
                     <td className="px-2 py-2 sm:py-4 border-b border-gray-200">
                       <QuantityButton
                         quantity={product.quantity}
-                        moreLot={moreLot}
-                        lessLot={lessLot}
                         id={product.id}
                       />
                     </td>

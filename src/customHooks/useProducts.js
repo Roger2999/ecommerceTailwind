@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-export const useProducts = () => {
+export const useProducts = (url) => {
   const fetchProducts = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(
         "Ha ocurrido el siguiente error",

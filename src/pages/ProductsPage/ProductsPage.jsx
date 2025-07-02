@@ -6,7 +6,9 @@ import { useCarStore } from "../../stores/useCarStore";
 import { useCategoryStore } from "../../stores/useCategoryStore";
 
 export const ProductsPage = () => {
-  const { products, isLoading, isError, error } = useProducts();
+  const { products, isLoading, isError, error } = useProducts(
+    "https://fakestoreapi.com/products"
+  );
   const car = useCarStore((state) => state.car);
   const addToCar = useCarStore((state) => state.addToCar);
   const removeFromCar = useCarStore((state) => state.removeFromCar);

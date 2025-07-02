@@ -1,7 +1,8 @@
 import { create } from "zustand";
-
+//para manejo de estado global de gestion de carrito
 export const useCarStore = create((set) => ({
   car: [],
+
   addToCar: (product) =>
     set((state) => ({
       car: [...state.car, { ...product, quantity: 1 }],
