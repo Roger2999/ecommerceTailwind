@@ -3,3 +3,11 @@
     justify-content: center;
     margin-top: 20px;
 }
+.loading-container{
+    width: fit-content;
+    margin: 350px auto;
+}
+.error-container{
+     width: fit-content;
+    margin: 350px auto;
+}

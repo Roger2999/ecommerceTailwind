@@ -1,4 +1,3 @@
-import { useCarStore } from "../../stores/useCarStore";
 import { QuantityButton } from "../QuantityButton";
 import { Button } from "../QuantityButton/Button";
 import "./Cards.css";
@@ -12,14 +11,16 @@ export const Cards = ({
 
   productsFiltrated,
 }) => {
-  const moreLot = useCarStore((state) => state.moreLot);
-  const lessLot = useCarStore((state) => state.lessLot);
   return (
     <>
       {isLoading ? (
-        <p>Cargando productos...</p>
+        <div className="loading-container">
+          <p>Cargando productos...</p>
+        </div>
       ) : isError ? (
-        <p>Ha ocurrido un error: {error.message}</p>
+        <div className="error-container">
+          <p>Ha ocurrido un error: {error.message}</p>
+        </div>
       ) : (
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -53,30 +54,28 @@ export const Cards = ({
                         {product.price}
                       </p>
                     </div>
-                    {inCar ? (
-                      <>
-                        <QuantityButton
-                          moreLot={moreLot}
-                          lessLot={lessLot}
-                          id={product.id}
-                          quantity={inCarQuantity.quantity}
-                          className="button-container"
-                        />
+                    <div className="flex flex-col items-center mt-2">
+                      {inCar ? (
+                        <>
+                          <QuantityButton
+                            id={product.id}
+                            quantity={inCarQuantity.quantity}
+                            className=" text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500 "
+                          />
+                          <Button
+                            handleClick={() => removeFromCar(product.id)}
+                            label={"Quitar del carrito"}
+                            className="w-40 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-3 py-1.5 text-center mb-4 mt-4"
+                          />
+                        </>
+                      ) : (
                         <Button
-                          type="button"
-                          variant="outcard"
-                          handleClick={() => removeFromCar(product.id)}
-                          label={"Quitar del carrito"}
+                          handleClick={() => addToCar(product)}
+                          label={"Agregar al carrito"}
+                          className="w-40 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-3 py-1.5 text-center mb-2 mt-20"
                         />
-                      </>
-                    ) : (
-                      <Button
-                        type="button"
-                        variant="incard"
-                        handleClick={() => addToCar(product)}
-                        label={"Agregar al carrito"}
-                      />
-                    )}
+                      )}
+                    </div>
                   </div>
                 );
               })}

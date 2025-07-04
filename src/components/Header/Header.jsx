@@ -19,11 +19,7 @@ export const Header = () => {
               className="-m-1.5 p-1.5 flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
             >
               <span className="sr-only">Your Company</span>
-              <img
-                alt="Logo"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
-              />
+              <img alt="Logo" src="public\car.svg" className="h-8 w-auto" />
             </NavLink>
           </div>
           <div className="flex lg:hidden">

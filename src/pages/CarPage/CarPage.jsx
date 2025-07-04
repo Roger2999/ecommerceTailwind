@@ -1,6 +1,7 @@
 import { QuantityButton } from "../../components/QuantityButton";
+import { Button } from "../../components/QuantityButton/Button";
 import { useCarStore } from "../../stores/useCarStore";
-
+import "../../components/QuantityButton/Button/Button.css";
 export const CarPage = () => {
   const car = useCarStore((state) => state.car);
   const removeFromCar = useCarStore((state) => state.removeFromCar);
@@ -87,6 +88,7 @@ export const CarPage = () => {
                       <QuantityButton
                         quantity={product.quantity}
                         id={product.id}
+                        className="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500"
                       />
                     </td>
                     <td className="px-2 py-2 sm:py-4 border-b border-gray-200">
@@ -102,10 +104,18 @@ export const CarPage = () => {
               </tbody>
             </table>
           </div>
-          <div className="w-full flex justify-center mt-4">
-            <span className="text-base sm:text-lg font-semibold text-center">
+          <div className="w-full flex justify-center i mt-4">
+            <span className="text-base sm:text-lg font-semibold text-center mt-1">
               Precio total: {totalPrice}
             </span>
+            <Button
+              label="Comprar"
+              handleClick={() => {
+                alert("Se ha realizado la compra");
+                print();
+              }}
+              className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ml-5 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800  "
+            ></Button>
           </div>
         </div>
       </div>
