@@ -54,25 +54,25 @@ export const Cards = ({
                         {product.price}
                       </p>
                     </div>
-                    <div className="flex flex-col items-center mt-2">
+                    <div className="products-btns-container flex flex-col items-center justify-start h-[8rem] mt-5">
                       {inCar ? (
                         <>
-                          <QuantityButton
-                            id={product.id}
-                            quantity={inCarQuantity.quantity}
-                            className=" text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500 "
-                          />
                           <Button
                             handleClick={() => removeFromCar(product.id)}
                             label={"Quitar del carrito"}
-                            className="w-40 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-3 py-1.5 text-center mb-4 mt-4"
+                            className="w-40 hover:bg-gray-200  shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-400/80 font-semibold rounded-lg text-sm px-3 py-1.5 text-center active:bg-gray-500"
+                          />
+                          <QuantityButton
+                            id={product.id}
+                            quantity={inCarQuantity.quantity}
+                            className=" text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white font-medium rounded-full text-sm p-2 w-10 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white "
                           />
                         </>
                       ) : (
                         <Button
                           handleClick={() => addToCar(product)}
                           label={"Agregar al carrito"}
-                          className="w-40 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-3 py-1.5 text-center mb-2 mt-20"
+                          className="w-40  shadow-lg shadow-gray-500/50 dark:shadow-lg dark:shadow-gray-400/80 font-semibold rounded-lg text-sm px-3 py-1.5 text-center bg-white/20  backdrop-blur-2xl hover:bg-gray-200 active:bg-gray-500"
                         />
                       )}
                     </div>
