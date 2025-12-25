@@ -1,5 +1,5 @@
 import { useCarStore } from "../../stores/useCarStore";
-
+import carPageIcon from "../../assets/car-icon.svg";
 export const Badge = () => {
   const quantity = useCarStore((state) => state.car.length);
   return (
@@ -14,7 +14,7 @@ export const Badge = () => {
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
           viewBox="0 0 20 16"
-          src="src\assets\car-icon.svg"
+          src={carPageIcon}
         ></img>
         <span className="sr-only">Notifications</span>
         <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
