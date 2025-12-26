@@ -40,7 +40,7 @@ export const Cards = ({
                     className="group flex flex-col justify-between min-h-full bg-white rounded-lg p-2 shadow"
                   >
                     <div>
-                      <div className="w-full h-48 flex items-center justify-center bg-white rounded-lg card-container">
+                      <div className="w-full min-h-48 flex items-center justify-center bg-white rounded-lg card-container">
                         <img
                           alt={product.title}
                           src={product.image}
