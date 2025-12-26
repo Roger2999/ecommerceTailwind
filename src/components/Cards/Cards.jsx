@@ -37,7 +37,7 @@ export const Cards = ({
                 return (
                   <div
                     key={product.id}
-                    className="group flex flex-col justify-between h-full bg-white rounded-lg p-2 shadow"
+                    className="group flex flex-col justify-between min-h-full bg-white rounded-lg p-2 shadow"
                   >
                     <div>
                       <div className="w-full h-48 flex items-center justify-center bg-white rounded-lg card-container">
